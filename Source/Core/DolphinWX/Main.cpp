@@ -141,6 +141,8 @@ bool DolphinApp::OnInit()
 		m_prev_seekbar = SConfig::GetInstance().m_InterfaceSeekbar;
 		SConfig::GetInstance().m_InterfaceSeekbar = false;
 	}
+	if (m_select_output_filename_base && !m_output_filename_base.empty())
+		SConfig::GetInstance().m_strOutputFilenameBase = WxStrToStr(m_output_filename_base);
 
 	if (m_select_audio_emulation)
 		SConfig::GetInstance().bDSPHLE = (m_audio_emulation_name.Upper() == "HLE");
@@ -240,6 +242,8 @@ void DolphinApp::OnInitCmdLine(wxCmdLineParser& parser)
 			 wxCMD_LINE_PARAM_OPTIONAL},
 			{wxCMD_LINE_OPTION, "i", "slippi-input", "Path to Slippi replay config file (default: Slippi/playback.txt)", 
 			wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL},
+			{wxCMD_LINE_OPTION, "o", "output-filename-base", "Base of filenames for audio and video dump files", 
+			wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL},
 			{wxCMD_LINE_OPTION, "a", "audio_emulation", "Low level (LLE) or high level (HLE) audio",
 			 wxCMD_LINE_VAL_STRING, wxCMD_LINE_PARAM_OPTIONAL},
 			{wxCMD_LINE_SWITCH, "hs", "hide-seekbar", "Hide seekbar during playback", wxCMD_LINE_VAL_NONE,
@@ -308,6 +312,7 @@ bool DolphinApp::OnCmdLineParsed(wxCmdLineParser& parser)
 	m_select_audio_emulation = parser.Found("audio_emulation", &m_audio_emulation_name);
 	m_select_slippi_input = parser.Found("slippi-input", &m_slippi_input_name);
 	m_hide_seekbar = parser.Found("hide-seekbar");
+	m_select_output_filename_base = parser.Found("output-filename-base", &m_output_filename_base);
 	m_play_movie = parser.Found("movie", &m_movie_file);
 	parser.Found("user", &m_user_path);
 
