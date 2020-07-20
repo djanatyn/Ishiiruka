@@ -1,6 +1,6 @@
-{ sources ? import ./sources.nix, mesa_drivers, mesa_glu, mesa, pkgconfig, bluez
-, ffmpeg, libao, libGLU, gtk2, gtk3, glib, gettext, xorg, readline, openal
-, libevdev, portaudio, libusb, libpulseaudio, libudev, gnumake, wxGTK31
+{ sources ? import ./nix/sources.nix, mesa_drivers, mesa_glu, mesa, pkgconfig
+, bluez, ffmpeg, libao, libGLU, gtk2, gtk3, glib, gettext, xorg, readline
+, openal, libevdev, portaudio, libusb, libpulseaudio, libudev, gnumake, wxGTK31
 , gdk-pixbuf, soundtouch, miniupnpc, mbedtls, curl, lzo, sfml, enet, xdg_utils
 , hidapi }:
 with rec {
