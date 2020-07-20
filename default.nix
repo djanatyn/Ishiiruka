@@ -1,4 +1,8 @@
-{ sources ? import ./nix/sources.nix }:
+{ sources ? import ./sources.nix, mesa_drivers, mesa_glu, mesa, pkgconfig, bluez
+, ffmpeg, libao, libGLU, gtk2, gtk3, glib, gettext, xorg, readline, openal
+, libevdev, portaudio, libusb, libpulseaudio, libudev, gnumake, wxGTK31
+, gdk-pixbuf, soundtouch, miniupnpc, mbedtls, curl, lzo, sfml, enet, xdg_utils
+, hidapi }:
 with rec {
   overlay = _: pkgs: { niv = import sources.niv { }; };
   pkgs = import sources.nixpkgs { overlays = [ overlay ]; };
@@ -8,7 +12,7 @@ pkgs.stdenv.mkDerivation rec {
   version = "2.2.0";
   name = "${pname}-${version}";
   src = builtins.path {
-    path = ./.;
+    path = ./..;
     inherit name;
   };
 
@@ -42,8 +46,6 @@ pkgs.stdenv.mkDerivation rec {
     mesa_drivers
     mesa_glu
     mesa
-    vulkan-headers
-    vulkan-tools
     pkgconfig
     bluez
     ffmpeg
