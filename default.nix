@@ -38,7 +38,7 @@ pkgs.stdenv.mkDerivation rec {
     touch Binaries/portable.txt
     cp -r -n ../Data/Sys/ Binaries/
     cp -r Binaries/ $out
-    mv $out/dolphin-emu $out/slippi-netplay
+    install -m755 -D slippi-netplay $out/dolphin-emu
   '';
 
   nativeBuildInputs = with pkgs; [ pkgconfig cmake ];
