@@ -12,7 +12,7 @@ pkgs.stdenv.mkDerivation rec {
   version = "2.2.0";
   name = "${pname}-${version}";
   src = builtins.path {
-    path = ./..;
+    path = ./.;
     inherit name;
   };
 
