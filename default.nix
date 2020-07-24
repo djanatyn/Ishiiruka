@@ -9,7 +9,7 @@ with rec {
 };
 pkgs.stdenv.mkDerivation rec {
   pname = "slippi-ishiiruka";
-  version = "2.2.0";
+  version = "2.2.1";
   name = "${pname}-${version}";
   src = builtins.path {
     path = ./.;
